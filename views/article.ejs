@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css">
+  <title>My App</title>
+</head>
+<body>
+  <div class="container">
+      <% include nav %>
+      <div class="mt-5">
+        <h1><%= article.title%></h1>
+        <h3>Made by <%= author%></h3>
+        <p><%= article.body%></p>
+        <% if(user){ %>
+          <% if(user.id == article.author){ %>
+          <a href="/articles/edit/<%= article._id%>" class="btn btn-primary">Edit</a>
+          <a href="#" class="btn btn-danger delete-article" data-id="<%= article._id%>">Delete</a>
+          <% } %>
+        <% } %>
+      </div>
+      <% include layout %>
+  </div>
+</body>
+</html>
